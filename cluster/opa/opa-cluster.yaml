@@ -1,0 +1,34 @@
+---
+# Source: opa/templates/mgmt-clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: opa
+    chart: opa-1.14.4
+    heritage: Helm
+    release: opa-fgd-apa
+    component: mgmt
+  name: opa-fgd-apa-mgmt
+rules:
+  []
+---
+# Source: opa/templates/mgmt-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: opa
+    chart: opa-1.14.4
+    heritage: Helm
+    release: opa-fgd-apa
+    component: mgmt
+  name: opa-fgd-apa-mgmt
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: opa-fgd-apa-mgmt
+subjects:
+  - kind: ServiceAccount
+    name: opa-fgd-apa
+    namespace: default
